@@ -7,5 +7,5 @@ export {
     HomeHeader,
     NFTCard,
     FocusedStatusBar,
-    CircleButton
+    CircleButton,
 }
