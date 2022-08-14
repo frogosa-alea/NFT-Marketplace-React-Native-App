@@ -10,11 +10,14 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-navigation/core": "^6.2.2",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.1.1",
     "expo": "~44.0.0",
+    "expo-constants": "~13.0.1",
     "expo-font": "~10.0.4",
     "expo-updates": "~0.11.6",
+    "metro": "^0.72.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",

@@ -1,11 +1,21 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import { Text, View, SafeAreaView, FlatList } from 'react-native'
+import { options, fetchData } from '../utils/fetchData';
 
-import { COLORS, NFTData } from '../constants'
-import { NFTCard, HomeHeader, FocusedStatusBar } from '../components'
-
+import { COLORS, NFTData, SIZES, assets, SHADOWS} from '../constants'
+import { NFTCard, HomeHeader, FocusedStatusBar, RectButton } from '../components'
+import AssetCard from '../components/AssetCard';
 const Home = () => {
     const [nftData, setNftData] = useState(NFTData);
+    const [nftApiData, setNftApiData] = useState([]);
+
+    useEffect(() => {
+        const fetchNFTData = async() => {
+          const data = await fetchData('https://opensea13.p.rapidapi.com/assets',options);
+          setNftApiData(data.assets)
+        }
+        fetchNFTData();
+    }, [])
 
     const handleSearch = (value) => {
         if(!value.length) return setNftData(NFTData);
@@ -21,18 +31,25 @@ const Home = () => {
         }
 
     }
+    const handleLoadMore = () => {
+        console.log('loadMore')
+    };
   return (
     <SafeAreaView style={{ flex: 1}}>
         <FocusedStatusBar background={COLORS.primary}/>
         <View style={{ flex: 1 }}>
             <View style={{ zIndex: 0}}>
-                <FlatList
-                    keyExtractor={(item) => item.id}
-                    data={nftData}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={({item}) => <NFTCard data={item} />}
-                    ListHeaderComponent={<HomeHeader onSearch={handleSearch}/>}
-                />
+                {nftApiData &&
+                    <FlatList
+                        onEndReached={handleLoadMore}
+                        keyExtractor={(item) => item.id}
+                        data={nftApiData}
+                        showsVerticalScrollIndicator={false}
+                        // renderItem={({item}) => <NFTCard data={item} />}
+                        renderItem={({item}) => <AssetCard data={item} />}
+                        ListHeaderComponent={<HomeHeader onSearch={handleSearch}/>}
+                    />
+                }
             </View>
             <View style={{
                 position: 'absolute',
@@ -43,7 +60,7 @@ const Home = () => {
                 zIndex: -1
             }}>
                 <View style={{ height: 300, backgroundColor: COLORS.primary}}/>
-                <View style={{ flex: 1, background: COLORS.white}} />
+                <View style={{ flex: 1, backgroundColor: "#ECCD61"}} />
             </View>
         </View>
     </SafeAreaView>

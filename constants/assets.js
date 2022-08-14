@@ -13,6 +13,8 @@ import nft05 from "../assets/images/nft05.jpeg";
 import nft06 from "../assets/images/nft06.jpeg";
 import nft07 from "../assets/images/nft07.jpeg";
 
+import gradient from "../assets/images/gradient.png";
+
 import person01 from "../assets/images/person01.png";
 import person02 from "../assets/images/person02.png";
 import person03 from "../assets/images/person03.png";
@@ -38,4 +40,6 @@ export default {
   person02,
   person03,
   person04,
+
+  gradient
 };

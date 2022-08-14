@@ -6,7 +6,7 @@ const HomeHeader = ({onSearch}) => {
   return (
     <View
       style={{
-        backgroundColor: COLORS.primary,
+        background: COLORS.primary,
         padding: SIZES.font,
       }}
     >
@@ -20,7 +20,7 @@ const HomeHeader = ({onSearch}) => {
         <Image
           source={assets.logo}
           resizeMode='contain'
-          style={{ width: 90, height: 25}}
+          style={{ width: 150, height: 85}}
         />
         <View style={{ width: 45, height: 45}}>
           <Image
@@ -43,11 +43,11 @@ const HomeHeader = ({onSearch}) => {
         <Text
           style={{
             fontFamily: FONTS.regular,
-            fontSize: SIZES.small,
+            fontSize: SIZES.medium,
             color: COLORS.white
           }}
         >
-          Hello Victoria 👋
+          Hello Cara! 👋
         </Text>
         <Text
           style={{
@@ -57,10 +57,10 @@ const HomeHeader = ({onSearch}) => {
             marginTop: SIZES.base / 2
           }}
         >
-          Let's find a masterpiece
+          Let's dive in!
         </Text>
       </View>
-      <View style={{marginTop: SIZES.font}}>
+      {/* <View style={{marginTop: SIZES.font}}>
         <View
           style={{
             width: '100%',
@@ -89,7 +89,7 @@ const HomeHeader = ({onSearch}) => {
             onChangeText={onSearch}
           />
         </View>
-      </View>
+      </View> */}
     </View>
   )
 }
